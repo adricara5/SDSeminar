@@ -1,5 +1,6 @@
 tableextension 50100 "CSD ResourceExt" extends Resource
 // CSD1.00 - 2022-11-11 - D.E.Veloper
+// 1.1 - Add fields to the Resource Table
 {
     fields
     {
