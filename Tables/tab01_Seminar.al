@@ -108,7 +108,7 @@ table 50101 "CSD Seminar"
 
     var
         SeminarSetup: Record "CSD Seminar Setup";
-        //CommmentLine: Record "CSD Seminar Comment Line";
+        CommentLine: Record "CSD Seminar Comment Line";
         Seminar: Record "CSD Seminar";
         GenProdPostingGroup: Record "Gen. Product Posting Group";
         NoSeriesMgt: codeunit NoSeriesManagement;
@@ -133,10 +133,10 @@ table 50101 "CSD Seminar"
     trigger OnDelete()
     //deleting any comment lines for the seminar record being deleted
     begin
-        //CommentLine.Reset;
-        //CommentLine.SetRange("Table Name", CommentLine."Table Name"::Seminar);
-        //CommentLine.SetRange("No.","No.");
-        //CommentLine.DeleteAll;
+        CommentLine.Reset;
+        CommentLine.SetRange("Table Name", CommentLine."Table Name"::Seminar);
+        CommentLine.SetRange("No.", "No.");
+        CommentLine.DeleteAll;
     end;
 
     trigger OnRename()

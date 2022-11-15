@@ -88,8 +88,8 @@ page 50101 "CSD Seminar Card"
             {
                 action("Co&mments") //makes it possible to show the CSD Seminar Comment Sheet page for the seminar that is currently displayed in the page
                 {
-                    //RunObject = page "CSD Seminar Comment Sheet";
-                    //RunPageLink = "Table Name" = const(Seminar), "No." = field("No.");
+                    RunObject = page "CSD Seminar Comment Sheet";
+                    RunPageLink = "Table Name" = const(Seminar), "No." = field("No.");
                     Image = Comment;
                     Promoted = true;
                     PromotedIsBig = true;
