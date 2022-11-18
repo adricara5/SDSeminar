@@ -5,13 +5,15 @@ page 50117 "CSD Seminar Details FactBox"
     //     - Created new page
 
     Caption = 'Seminar Details';
-    PageType = CardPart;
-    SourceTable = "CSD Seminar";
+    PageType = CardPart;  //a page that is embedded to another page
+    //FactBoxes must be of CardPart or ListPart type
+    SourceTable = "CSD Seminar";    //this FactBox shows info about 1 seminar
 
     layout
     {
         area(content)
         {
+            //no group control because CardPart does not use groups
             field("No."; Rec."No.")
             {
             }
@@ -33,8 +35,6 @@ page 50117 "CSD Seminar Details FactBox"
         }
     }
 
-    actions
-    {
-    }
+    //no actions because FactBoxes do not use actions
 }
 

@@ -6,8 +6,9 @@ page 50111 "CSD Seminar Reg. Subpage"
 
     Caption = 'Lines';
     DelayedInsert = true;
-    PageType = List;
+    PageType = ListPart;  //document subpages must be of ListPart type
     SourceTable = "CSD Seminar Registration Line";
+    AutoSplitKey = true;  //All document subpages must set this property to enable BC to automatically assign the values in the Line No. field.
 
     layout
     {

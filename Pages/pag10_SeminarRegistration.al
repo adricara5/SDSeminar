@@ -5,7 +5,7 @@ page 50110 "CSD Seminar Registration"
     //     - Created new page
 
     Caption = 'Seminar Registration';
-    PageType = Card;
+    PageType = Document;  //Document pages must also include subpages
     SourceTable = "CSD Seminar Reg. Header";
     UsageCategory = tasks;
 
@@ -13,6 +13,7 @@ page 50110 "CSD Seminar Registration"
     {
         area(content)
         {
+            //there are 3 group controls that represent FastTabs
             group(General)
             {
                 field("No."; Rec."No.")
@@ -58,6 +59,12 @@ page 50110 "CSD Seminar Registration"
                 {
                 }
             }
+
+            part(SeminarRegistrationLines; "CSD Seminar Reg. Subpage")
+            {
+                Caption = 'Lines';
+                SubPageLink = "Document No." = field("No.");
+            }
             group("Seminar Room")
             {
                 field("Room Code"; Rec."Room Resource No.")
@@ -102,7 +109,14 @@ page 50110 "CSD Seminar Registration"
         {
             part("Seminar Details FactBox"; "CSD Seminar Details FactBox")
             {
-                SubPageLink = "No." = field("Seminar No.");
+                SubPageLink = "No." = field("Seminar No.");  //links a page part to the parent page
+                //it enables the page part to show the information related to the record shown in the parent page
+            }
+            part("Customer Details FactBox"; "CSD Seminar Details FactBox")
+            {
+                Provider = SeminarRegistrationLines;  //Provider specifies the subpage that provides the source table for the subpage link
+                SubPageLink = "No." = field("Bill-to Customer No.");
+                //link the Customer No. field on the Customer Details FactBox page to the Bill-to Customer No. field on the Seminar Reg. Subpage page
             }
             systempart("Links"; Links)
             {
