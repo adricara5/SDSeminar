@@ -1,4 +1,7 @@
 table 50104 "CSD Seminar Comment Line"
+// CSD1.00 - 2018-01-01 - D. E. Veloper
+// Chapter 5 - Lab 2-1
+// Chapter 7 - Lab 3-2
 {
     Caption = 'Seminar Comment Line';
     LookupPageId = "CSD Seminar Comment List";
@@ -20,8 +23,11 @@ table 50104 "CSD Seminar Comment Line"
         field(30; "No."; Code[20])
         {
             Caption = 'No.';
-            TableRelation = if ("Table Name" = CONST(Seminar)) "CSD Seminar" else
-            if ("Table Name" = CONST("Seminar Registration")) "CSD Seminar Reg. Header";
+            TableRelation = if ("Table Name" = CONST(Seminar)) "CSD Seminar"
+            else
+            if ("Table Name" = CONST("Seminar Registration")) "CSD Seminar Reg. Header"
+            else
+            if ("Table Name" = CONST("Posted Seminar Registration")) "CSD Posted Seminar Reg. Header";
             //condition table relation for when comments are to be used with the documents
         }
         field(40; "Line No."; Integer)
