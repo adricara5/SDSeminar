@@ -1,4 +1,6 @@
 page 50107 "CSD Seminar Comment List"
+// Chapter 7 - Lab 4-8
+// Added Action Post
 {
     PageType = List;
     Caption = 'Seminar Comment List';
@@ -24,6 +26,27 @@ page 50107 "CSD Seminar Comment List"
                 field(Comment; Rec.Comment)
                 {
                     Caption = 'Comment';
+                }
+            }
+        }
+    }
+    actions
+    {
+        area(Navigation)
+        {
+            group("&Seminar Comment List")
+            {
+                Caption = 'Seminar Comment List';
+                action("&Post")
+                {
+                    Caption = '&Post';
+                    Image = PostDocument;
+                    Promoted = true;
+                    PromotedIsBig = true;
+                    PromotedCategory = Process;
+                    ShortcutKey = F9;
+                    RunObject = codeunit "CSD Seminar-Post (Yes/No)";
+
                 }
             }
         }
