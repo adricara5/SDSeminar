@@ -362,6 +362,13 @@ table 50110 "CSD Seminar Reg. Header"
         "Document Date" := WORKDATE;
         SeminarSetup.GET;
         NoSeriesMgt.SetDefaultSeries("Posting No. Series", SeminarSetup."Posted Seminar Reg. Nos.");
+
+        // >> Lab 8 1-1
+        if GetFilter("Seminar No.") <> '' then  //checks if there is a filter on the Seminar No. field
+            if GetRangeMin("Seminar No.") = GetRangeMax("Seminar No.")  //then chechks if the filter applies to a single Seminar No.
+            then
+                Validate("Seminar No.", GetRangeMin("Seminar No."));  //Seminar No. field validates to the value in the filter
+        // << Lab 8 1-1
     end;
 
     local procedure InitRecord();

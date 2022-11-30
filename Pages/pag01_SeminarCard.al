@@ -86,6 +86,18 @@ page 50101 "CSD Seminar Card"
         {
             group("&Seminar") //The Ampersand (&) represents the shortcut key to be used with the action
             {
+                // >> Lab 8 1-2
+                action("Ledger Entries")  //action to run the Seminar Ledger Entries page for the current Seminar record
+                {
+                    Caption = 'Ledger Entries';
+                    RunObject = page "CSD Seminar Ledger Entries";
+                    RunPageLink = "Seminar No." = field("No.");
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    ShortcutKey = "Ctrl+F7";
+                    Image = WarrantyLedger;
+                }
+                // << Lab 8 1-2
                 action("Co&mments") //makes it possible to show the CSD Seminar Comment Sheet page for the seminar that is currently displayed in the page
                 {
                     RunObject = page "CSD Seminar Comment Sheet";
@@ -95,7 +107,33 @@ page 50101 "CSD Seminar Card"
                     PromotedIsBig = true;
                     PromotedOnly = true;
                 }
+
+                // >> Lab 8 1-2
+                action("&Registrations")
+                {
+                    Caption = '&Registrations';
+                    RunObject = page "CSD Seminar Registration List";
+                    RunPageLink = "Seminar No." = field("No.");
+                    Image = Timesheet;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                }
+                // << Lab 8 1-2
             }
         }
+        // >> Lab 8 1-2
+        area(Processing)
+        {
+            action("Seminar Registration")  //action to create a new Seminar Registration
+            {
+                RunObject = page "CSD Seminar Registration";
+                RunPageLink = "Seminar No." = field("No.");
+                RunPageMode = Create;
+                Image = NewTimesheet;
+                Promoted = true;
+                PromotedCategory = New;
+            }
+        }
+        // << Lab 8 1-2
     }
 }
