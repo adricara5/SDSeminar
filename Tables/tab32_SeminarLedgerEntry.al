@@ -147,11 +147,12 @@ table 50132 "CSD Seminar Ledger Entry"
             Caption = 'User Id';
             TableRelation = User where("User Name" = field("User Id"));
             ValidateTableRelation = false;  //doesnt need to validate the table relationship
-            trigger OnLookup();
+
+            trigger OnValidate()
             var
-                UserMgt: Codeunit "User Management";
+                UserSelection: Codeunit "User Selection";
             begin
-                UserMgt.LookupUserID("User Id");
+                UserSelection.ValidateUserName("User ID");
             end;
         }
     }

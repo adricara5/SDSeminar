@@ -142,11 +142,12 @@ table 50118 "CSD Posted Seminar Reg. Header"
             Caption = 'User Id';
             TableRelation = User;
             ValidateTableRelation = false;
-            trigger OnLookup()
+
+            trigger OnValidate()
             var
-                UserMgt: codeunit "User Management";
+                UserSelection: Codeunit "User Selection";
             begin
-                UserMgt.LookupUserID("User ID");
+                UserSelection.ValidateUserName("User ID");
             end;
         }
         field(30; "Source Code"; Code[10])

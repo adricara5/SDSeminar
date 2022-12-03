@@ -37,13 +37,17 @@ table 50133 "CSD Seminar Register"
             TableRelation = User."User Name";
             //This property is currently not supported
             //TestTableRelation = false;
+            //here I changed what the book instructed to do because the procedure was removed in the latest release
+            ValidateTableRelation = false;
 
-            trigger OnLookup();
+            trigger OnValidate()
             var
-                UserMgt: Codeunit "User Management";
+                UserSelection: Codeunit "User Selection";
             begin
-                UserMgt.LookupUserID("User ID");
+                UserSelection.ValidateUserName("User ID");
             end;
+
+
         }
         field(8; "Journal Batch Name"; Code[10])
         {
