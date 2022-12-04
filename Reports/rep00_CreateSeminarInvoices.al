@@ -1,4 +1,4 @@
-report 50100 "Create Seminar Invoices"
+report 50100 "CSD Create Seminar Invoices"
 {
     // CSD1.00 - 2018-01-01 - D. E. Veloper
     //   Chapter 9 - Lab 2
