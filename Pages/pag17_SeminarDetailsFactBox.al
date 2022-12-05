@@ -8,6 +8,7 @@ page 50117 "CSD Seminar Details FactBox"
     PageType = CardPart;  //a page that is embedded to another page
     //FactBoxes must be of CardPart or ListPart type
     SourceTable = "CSD Seminar";    //this FactBox shows info about 1 seminar
+    ApplicationArea = All;
 
     layout
     {

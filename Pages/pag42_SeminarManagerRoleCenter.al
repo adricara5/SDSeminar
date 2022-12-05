@@ -5,6 +5,7 @@ page 50142 "CSD Seminar Manager RoleCenter"
 {
     Caption = 'Seminar Manger RoleCenter';
     PageType = RoleCenter;
+    ApplicationArea = All;
 
     layout
     {

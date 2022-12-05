@@ -6,6 +6,7 @@ page 50141 "CSD My Seminars"
     PageType = ListPart;
     SourceTable = "CSD My Seminar";
     Caption = 'My Seminars';
+    ApplicationArea = All;
 
     layout
     {

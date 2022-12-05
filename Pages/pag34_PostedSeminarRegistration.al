@@ -8,6 +8,7 @@ page 50134 "CSD Posted Seminar Reg."
     Editable = false;
     PageType = Document;
     SourceTable = "CSD Posted Seminar Reg. Header";
+    ApplicationArea = All;
 
     layout
     {

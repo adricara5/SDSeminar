@@ -1,5 +1,6 @@
 page 50101 "CSD Seminar Card"
 {
+    ApplicationArea = All;
     PageType = Card;
     SourceTable = "CSD Seminar";
     Caption = 'Seminar Card';

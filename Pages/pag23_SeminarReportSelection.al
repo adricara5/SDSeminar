@@ -8,6 +8,7 @@ page 50123 "CSD Seminar Report Selection"
     PageType = Worksheet;
     SaveValues = true;
     SourceTable = "CSD Seminar Report Selections";
+    ApplicationArea = All;
 
     layout
     {
@@ -75,7 +76,7 @@ page 50123 "CSD Seminar Report Selection"
         Rec.FILTERGROUP(2);
         CASE ReportUsage2 OF
             ReportUsage2::Registration:
-                Rec.SETRANGE(Rec.Usage, Usage::Registration);
+                Rec.SETRANGE(Rec.Usage, Rec.Usage::Registration);
         end;
         Rec.FILTERGROUP(0);
     end;

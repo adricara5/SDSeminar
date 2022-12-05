@@ -2,6 +2,7 @@ page 50107 "CSD Seminar Comment List"
 // Chapter 7 - Lab 4-8
 // Added Action Post
 {
+    ApplicationArea = All;
     PageType = List;
     Caption = 'Seminar Comment List';
     SourceTable = "CSD Seminar Comment Line";

@@ -8,6 +8,7 @@ page 50110 "CSD Seminar Registration"
     PageType = Document;  //Document pages must also include subpages
     SourceTable = "CSD Seminar Reg. Header";
     UsageCategory = tasks;
+    ApplicationArea = All;
 
     layout
     {

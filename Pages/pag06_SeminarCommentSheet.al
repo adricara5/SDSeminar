@@ -4,6 +4,7 @@ page 50106 "CSD Seminar Comment Sheet"
     Caption = 'Seminar Comment Sheet';
     SourceTable = "CSD Seminar Comment Line";
     AutoSplitKey = true;
+    ApplicationArea = All;
 
     layout
     {

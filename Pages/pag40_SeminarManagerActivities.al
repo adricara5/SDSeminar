@@ -7,6 +7,7 @@ page 50140 "CSD Seminar Manager Activites"
     PageType = CardPart;
     Editable = false;
     SourceTable = "CSD Seminar Cue";
+    ApplicationArea = All;
 
     layout
     {

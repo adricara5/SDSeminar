@@ -6,6 +6,7 @@ page 50100 "CSD Seminar Setup"
     InsertAllowed = false;
     DeleteAllowed = false;
     UsageCategory = Administration;
+    ApplicationArea = All;
 
     layout
     {

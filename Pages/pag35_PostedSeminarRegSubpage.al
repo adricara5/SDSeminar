@@ -9,6 +9,7 @@ page 50135 "CSD Posted Seminar Reg.Subpage"
     DelayedInsert = true;
     PageType = ListPart;
     SourceTable = "CSD Posted Seminar Reg. Line";
+    ApplicationArea = All;
 
     layout
     {
