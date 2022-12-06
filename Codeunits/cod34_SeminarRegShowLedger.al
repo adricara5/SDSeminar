@@ -5,12 +5,11 @@ codeunit 50134 "CSD Seminar Reg.-Show Ledger"
     TableNo = "CSD Seminar Ledger Entry";
     trigger OnRun()
     begin
-        //need to check this again
         SeminarLedgerEntry.SETRANGE("Entry No.", SeminarRegister."From Entry No.", SeminarRegister."To Entry No.");
         page.Run(Page::"CSD Seminar Ledger Entries", SeminarLedgerEntry);
     end;
 
     var
         SeminarLedgerEntry: Record "CSD Seminar Ledger Entry";
-        SeminarRegister: Record "CSD Seminar Register";
+        SeminarRegister: Record "CSD Seminar Register";  //we do i need to add this
 }
