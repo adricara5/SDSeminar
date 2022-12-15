@@ -40,7 +40,8 @@ codeunit 50132 "CSD Seminar Jnl.-Post Line"
             if NextEntryNo = 0 then begin
                 SeminarLedgerEntry.LockTable(); //because when the NextEntryNo is 0 it means that the Code function was called for the 1st time during the posting process
                 //this lock is done to maintain transaction integrity
-                NextEntryNo := SeminarLedgerEntry."Entry No.";
+                if SeminarLedgerEntry.FindLast() then
+                    NextEntryNo := SeminarLedgerEntry."Entry No.";
                 //if there are any other entries in the Seminar Ledge Entry table, then the NextEntryNo is set to the last Entry No. Used
                 //if there are no other entities it remains 0 and the table remains on lock
                 NextEntryNo += 1; //it is increased by 1 to make sure that it either starts at 1 for the very first ledger entry or at the next available value if there are other ledger entries already available in the table
@@ -64,10 +65,10 @@ codeunit 50132 "CSD Seminar Jnl.-Post Line"
                     SeminarRegister."User ID" := USERID;  //gets the username of the user account that is logged in the current session
                     SeminarRegister.Insert();
                 end;
-                //the case when the SeminarRegister table record is already created and we need to update it
-                SeminarRegister."To Entry No." := NextEntryNo;
-                SeminarRegister.Modify();
             end;
+            //the case when the SeminarRegister table record is already created and we need to update it
+            SeminarRegister."To Entry No." := NextEntryNo;
+            SeminarRegister.Modify();
 
             SeminarLedgerEntry.Init();
             SeminarLedgerEntry."Seminar No." := "Seminar No.";
@@ -99,7 +100,6 @@ codeunit 50132 "CSD Seminar Jnl.-Post Line"
             SeminarLedgerEntry."Entry No." := NextEntryNo;
             SeminarLedgerEntry.Insert();
             NextEntryNo += 1;
-            //might interchange last 2 lines
 
         end;
     end;

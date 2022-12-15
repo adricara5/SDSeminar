@@ -69,38 +69,37 @@ codeunit 50100 "CSD Seminar-Post"
             if SeminarRegLine.FindSet() then BEGIN
                 repeat
                     LineCount += 1;
+                    Window.Update(2, LineCount);
+                    SeminarRegLine.TestField("Bill-to Customer No.");
+                    SeminarRegLine.TestField("Participant Contact No.");
+                    //if the line should not be invoiced, reset the below fields to zero
+                    if not SeminarRegLine."To Invoice" then begin
+                        SeminarRegLine."Seminar Price" := 0;
+                        SeminarRegLine."Line Discount %" := 0;
+                        SeminarRegLine."Line Discount Amount" := 0;
+                        SeminarRegLine.Amount := 0;
+                    end;
+
+                    //posting seminar Entry
+                    PostSeminarJnlLine(2); //posting the participant line
+
+                    //inserting the posted seminar registration lines
+                    PstdSeminarRegLine.Init();
+                    PstdSeminarRegLine.TransferFields(SeminarRegLine);
+                    PstdSeminarRegLine."Document No." := PstdSeminarRegHeader."No.";
+                    PstdSeminarRegLine.Insert();
                 until SeminarRegLine.NEXT = 0;
+
+                //posting charges to seminar ledger
+                PostCharges;
+                //posting instructor to seminar ledgers
+                PostSeminarJnlLine(0);
+                //posting seminar room to seminar ledgers
+                PostSeminarJnlLine(1);
+
+                //Deleting the registration header,lines,comments and Charges
+                Delete(true);  //fires the OnDelete trigger on the Seminar Registration header
             end;
-
-            Window.Update(2, LineCount);
-            SeminarRegLine.TestField("Bill-to Customer No.");
-            SeminarRegLine.TestField("Participant Contact No.");
-            //if the line should not be invoiced, reset the below fields to zero
-            if not SeminarRegLine."To Invoice" then begin
-                SeminarRegLine."Seminar Price" := 0;
-                SeminarRegLine."Line Discount %" := 0;
-                SeminarRegLine."Line Discount Amount" := 0;
-                SeminarRegLine.Amount := 0;
-            end;
-
-            //posting seminar Entry
-            PostSeminarJnlLine(2); //posting the participant line
-
-            //inserting the posted seminar registration lines
-            PstdSeminarRegLine.Init();
-            PstdSeminarRegLine.TransferFields(SeminarRegLine);
-            PstdSeminarRegLine."Document No." := PstdSeminarRegHeader."No.";
-            PstdSeminarRegLine.Insert();
-
-            //posting charges to seminar ledger
-            PostCharges;
-            //posting instructor to seminar ledgers
-            PostSeminarJnlLine(0);
-            //posting seminar room to seminar ledgers
-            PostSeminarJnlLine(1);
-
-            //Deleting the registration header,lines,comments and Charges
-            Delete(true);  //fires the OnDelete trigger on the Seminar Registration header
         end;
         Rec := SeminarRegHeader;
     end;
@@ -266,7 +265,6 @@ codeunit 50100 "CSD Seminar-Post"
 
             //posting the SeminarJnlLine through the Seminar Jnl. Post Line codeunit
             SeminarJnlPostLine.RunWithCheck(SeminarJnlLine);
-
         end;
     end;
 
